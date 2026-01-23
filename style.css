@@ -1,0 +1,316 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   VARIABLES – BLACK & GOLD LUXE
+========================= */
+:root {
+  --bg-main: #050505;
+  --bg-secondary: #0d0d0d;
+
+  --gold-1: #b8860b;   /* oro oscuro */
+  --gold-2: #d4af37;   /* oro clásico */
+  --gold-3: #ffd700;   /* oro brillante */
+  --gold-4: #fff2a8;   /* brillo */
+
+  --text-main: #f5e6c4;
+  --glass: rgba(212,175,55,0.08);
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  font-family: 'Russo One', sans-serif;
+
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,215,0,0.08), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(184,134,11,0.10), transparent 45%),
+    linear-gradient(180deg, #0a0a0a, #030303);
+
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =========================
+   GOLD SCANLINES (lujo sutil)
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,215,0,0.02) 0px,
+      rgba(255,215,0,0.02) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.section {
+  display: none;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  animation: fadeLuxury 0.5s ease;
+}
+
+.section.active {
+  display: flex;
+}
+
+@keyframes fadeLuxury {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   CONTENT BOX – GLASS GOLD
+========================= */
+.content-box {
+  background: linear-gradient(
+    145deg,
+    rgba(212,175,55,0.12),
+    rgba(255,215,0,0.05)
+  );
+
+  backdrop-filter: blur(18px);
+
+  border-radius: 22px;
+  padding: 28px;
+  text-align: center;
+
+  border: 1px solid rgba(255,215,0,0.15);
+
+  box-shadow:
+    0 0 30px rgba(212,175,55,0.25),
+    0 0 60px rgba(0,0,0,0.9);
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo {
+  width: 100%;
+  margin-bottom: 25px;
+  filter:
+    drop-shadow(0 0 10px var(--gold-2))
+    drop-shadow(0 0 25px rgba(255,215,0,0.4));
+}
+
+/* =========================
+   INPUT
+========================= */
+input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255,215,0,0.18);
+
+  outline: none;
+  font-size: 15px;
+
+  background: rgba(0,0,0,0.6);
+  color: var(--gold-3);
+
+  text-align: center;
+
+  box-shadow:
+    inset 0 0 14px rgba(212,175,55,0.25);
+}
+
+input::placeholder {
+  color: rgba(245,230,196,0.35);
+}
+
+/* =========================
+   BUTTON – GOLD METAL
+========================= */
+button {
+  margin-top: 22px;
+  width: 100%;
+  padding: 15px;
+
+  border-radius: 16px;
+  border: none;
+
+  font-size: 15px;
+  cursor: pointer;
+
+  background: linear-gradient(
+    135deg,
+    var(--gold-1),
+    var(--gold-3),
+    var(--gold-4)
+  );
+
+  color: #111;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  box-shadow:
+    0 0 18px rgba(255,215,0,0.5);
+
+  transition: 0.25s ease;
+}
+
+button:hover {
+  transform: scale(1.06);
+  box-shadow:
+    0 0 30px rgba(255,215,0,0.8);
+}
+
+/* =========================
+   TITLES
+========================= */
+h2 {
+  margin-bottom: 16px;
+  font-size: 22px;
+
+  color: var(--gold-3);
+
+  text-shadow:
+    0 0 10px rgba(255,215,0,0.6);
+}
+
+p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(245,230,196,0.75);
+}
+
+/* =========================
+   CARDS GRID
+========================= */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+/* =========================
+   CARD – GOLD GLASS
+========================= */
+.card {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(255,215,0,0.10),
+      rgba(184,134,11,0.25)
+    );
+
+  border-radius: 16px;
+  padding: 8px;
+  cursor: pointer;
+
+  border: 1px solid rgba(255,215,0,0.15);
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 0 12px rgba(212,175,55,0.25);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 25px rgba(255,215,0,0.7);
+}
+
+.card.selected {
+  outline: 3px solid var(--gold-3);
+  box-shadow:
+    0 0 35px rgba(255,215,0,0.9);
+}
+
+/* =========================
+   SPINNER – GOLD CORE
+========================= */
+.spinner {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 22px auto;
+
+  border: 6px solid rgba(255,255,255,0.12);
+  border-top: 6px solid var(--gold-3);
+
+  animation: spin 1s linear infinite;
+
+  box-shadow:
+    0 0 25px rgba(255,215,0,0.8);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   FINAL POP
+========================= */
+#finalCards .card {
+  animation: goldPop 0.4s ease;
+}
+
+@keyframes goldPop {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 360px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
