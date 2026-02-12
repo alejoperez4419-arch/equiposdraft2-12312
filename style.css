@@ -8,53 +8,47 @@
 }
 
 /* =========================
-   VARIABLES – BLACK & GOLD LUXE
+   VARIABLES – LUNAR IMPERIAL
 ========================= */
 :root {
-  --bg-main: #050505;
-  --bg-secondary: #0d0d0d;
+  --red-1: #7a0000;
+  --red-2: #b30000;
+  --red-3: #ff1a1a;
 
-  --gold-1: #b8860b;   /* oro oscuro */
-  --gold-2: #d4af37;   /* oro clásico */
-  --gold-3: #ffd700;   /* oro brillante */
-  --gold-4: #fff2a8;   /* brillo */
+  --gold-1: #b8860b;
+  --gold-2: #d4af37;
+  --gold-3: #ffd700;
+  --gold-4: #fff4b0;
 
-  --text-main: #f5e6c4;
-  --glass: rgba(212,175,55,0.08);
+  --text-light: #ffe9b3;
 }
 
 /* =========================
-   BODY
+   BODY – LUNAR BACKGROUND
 ========================= */
 body {
   font-family: 'Russo One', sans-serif;
-
-  background:
-    radial-gradient(circle at 20% 10%, rgba(255,215,0,0.08), transparent 40%),
-    radial-gradient(circle at 80% 90%, rgba(184,134,11,0.10), transparent 45%),
-    linear-gradient(180deg, #0a0a0a, #030303);
-
-  color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
+  color: var(--text-light);
+
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,215,0,0.25), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(255,0,0,0.3), transparent 40%),
+    linear-gradient(135deg, #3a0000, #7a0000, #2b0000);
 }
 
 /* =========================
-   GOLD SCANLINES (lujo sutil)
+   GOLD BORDER FRAME EFFECT
 ========================= */
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255,215,0,0.02) 0px,
-      rgba(255,215,0,0.02) 1px,
-      transparent 2px,
-      transparent 4px
-    );
+  inset: 10px;
   pointer-events: none;
+  box-shadow:
+    0 0 30px rgba(255,215,0,0.5),
+    inset 0 0 40px rgba(255,215,0,0.2);
   z-index: 1;
 }
 
@@ -62,10 +56,9 @@ body::before {
    CONTAINER
 ========================= */
 .container {
-  width: 100%;
   max-width: 420px;
   margin: auto;
-  padding: 20px;
+  padding: 25px;
   position: relative;
   z-index: 2;
 }
@@ -78,17 +71,17 @@ body::before {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  animation: fadeLuxury 0.5s ease;
+  animation: fadeLunar 0.6s ease;
 }
 
 .section.active {
   display: flex;
 }
 
-@keyframes fadeLuxury {
+@keyframes fadeLunar {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.92);
   }
   to {
     opacity: 1;
@@ -97,26 +90,25 @@ body::before {
 }
 
 /* =========================
-   CONTENT BOX – GLASS GOLD
+   CONTENT BOX – RED & GOLD GLASS
 ========================= */
 .content-box {
-  background: linear-gradient(
-    145deg,
-    rgba(212,175,55,0.12),
-    rgba(255,215,0,0.05)
-  );
+  background:
+    linear-gradient(
+      145deg,
+      rgba(179,0,0,0.85),
+      rgba(122,0,0,0.95)
+    );
 
-  backdrop-filter: blur(18px);
-
-  border-radius: 22px;
-  padding: 28px;
+  border-radius: 24px;
+  padding: 30px;
   text-align: center;
 
-  border: 1px solid rgba(255,215,0,0.15);
+  border: 2px solid var(--gold-2);
 
   box-shadow:
-    0 0 30px rgba(212,175,55,0.25),
-    0 0 60px rgba(0,0,0,0.9);
+    0 0 40px rgba(255,215,0,0.5),
+    0 0 80px rgba(255,0,0,0.4);
 }
 
 /* =========================
@@ -125,9 +117,28 @@ body::before {
 .logo {
   width: 100%;
   margin-bottom: 25px;
+
   filter:
-    drop-shadow(0 0 10px var(--gold-2))
-    drop-shadow(0 0 25px rgba(255,215,0,0.4));
+    drop-shadow(0 0 15px var(--gold-3))
+    drop-shadow(0 0 35px rgba(255,215,0,0.6));
+}
+
+/* =========================
+   TITLES
+========================= */
+h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: var(--gold-3);
+  text-shadow:
+    0 0 10px var(--gold-3),
+    0 0 25px rgba(255,215,0,0.7);
+}
+
+p {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #ffe0a3;
 }
 
 /* =========================
@@ -139,79 +150,58 @@ input {
   margin-top: 12px;
 
   border-radius: 14px;
-  border: 1px solid rgba(255,215,0,0.18);
+  border: 2px solid var(--gold-2);
 
-  outline: none;
-  font-size: 15px;
-
-  background: rgba(0,0,0,0.6);
-  color: var(--gold-3);
+  background: rgba(0,0,0,0.5);
+  color: var(--gold-4);
 
   text-align: center;
+  font-size: 15px;
 
   box-shadow:
-    inset 0 0 14px rgba(212,175,55,0.25);
+    inset 0 0 15px rgba(255,215,0,0.3);
 }
 
 input::placeholder {
-  color: rgba(245,230,196,0.35);
+  color: rgba(255,240,180,0.4);
 }
 
 /* =========================
-   BUTTON – GOLD METAL
+   BUTTON – IMPERIAL GOLD
 ========================= */
 button {
   margin-top: 22px;
   width: 100%;
   padding: 15px;
 
-  border-radius: 16px;
+  border-radius: 18px;
   border: none;
 
   font-size: 15px;
   cursor: pointer;
 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
   background: linear-gradient(
     135deg,
-    var(--gold-1),
+    #8a6500,
     var(--gold-3),
     var(--gold-4)
   );
 
-  color: #111;
-
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  color: #4a0000;
 
   box-shadow:
-    0 0 18px rgba(255,215,0,0.5);
+    0 0 20px rgba(255,215,0,0.8);
 
-  transition: 0.25s ease;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.06);
+  transform: scale(1.08);
   box-shadow:
-    0 0 30px rgba(255,215,0,0.8);
-}
-
-/* =========================
-   TITLES
-========================= */
-h2 {
-  margin-bottom: 16px;
-  font-size: 22px;
-
-  color: var(--gold-3);
-
-  text-shadow:
-    0 0 10px rgba(255,215,0,0.6);
-}
-
-p {
-  margin-top: 10px;
-  font-size: 14px;
-  color: rgba(245,230,196,0.75);
+    0 0 40px rgba(255,215,0,1);
 }
 
 /* =========================
@@ -225,26 +215,26 @@ p {
 }
 
 /* =========================
-   CARD – GOLD GLASS
+   CARD – LUNAR STYLE
 ========================= */
 .card {
   background:
     linear-gradient(
       160deg,
-      rgba(255,215,0,0.10),
-      rgba(184,134,11,0.25)
+      rgba(255,0,0,0.7),
+      rgba(122,0,0,0.9)
     );
 
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 8px;
   cursor: pointer;
 
-  border: 1px solid rgba(255,215,0,0.15);
+  border: 2px solid var(--gold-2);
 
   transition: all 0.25s ease;
 
   box-shadow:
-    0 0 12px rgba(212,175,55,0.25);
+    0 0 20px rgba(255,215,0,0.5);
 }
 
 .card img {
@@ -253,19 +243,19 @@ p {
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.05);
   box-shadow:
-    0 0 25px rgba(255,215,0,0.7);
+    0 0 35px rgba(255,215,0,1);
 }
 
 .card.selected {
   outline: 3px solid var(--gold-3);
   box-shadow:
-    0 0 35px rgba(255,215,0,0.9);
+    0 0 45px rgba(255,215,0,1);
 }
 
 /* =========================
-   SPINNER – GOLD CORE
+   SPINNER – GOLD FIRE CORE
 ========================= */
 .spinner {
   width: 72px;
@@ -273,13 +263,13 @@ p {
   border-radius: 50%;
   margin: 22px auto;
 
-  border: 6px solid rgba(255,255,255,0.12);
+  border: 6px solid rgba(255,255,255,0.2);
   border-top: 6px solid var(--gold-3);
 
   animation: spin 1s linear infinite;
 
   box-shadow:
-    0 0 25px rgba(255,215,0,0.8);
+    0 0 30px rgba(255,215,0,1);
 }
 
 @keyframes spin {
@@ -297,7 +287,7 @@ p {
 
 @keyframes goldPop {
   from {
-    transform: scale(0.7);
+    transform: scale(0.6);
     opacity: 0;
   }
   to {
