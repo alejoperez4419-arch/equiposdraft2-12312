@@ -20,8 +20,8 @@ function goToCards() {
 
   // Cartas especiales
   const specialCards = [
+    { img: "draft.png", amount: 100000, type: "Draft" },
     { img: "fcpoint.png", amount: 100000, type: "FC Points" },
-    { img: "coin.png", amount: 100000, type: "Coins" },
     { img: "gem.png", amount: 100000, type: "Gems" }
   ];
 
