@@ -1,5 +1,5 @@
 /* =========================
-   RESET
+   RESET & ELEGANCE
 ========================= */
 * {
   margin: 0;
@@ -8,299 +8,257 @@
 }
 
 /* =========================
-   VARIABLES – LUNAR IMPERIAL
+   VARIABLES – YEAR OF THE FIRE HORSE (2026)
 ========================= */
 :root {
-  --red-1: #7a0000;
-  --red-2: #b30000;
-  --red-3: #ff1a1a;
+  /* Rojos Imperiales */
+  --crimson-dark: #4a0000;
+  --crimson-main: #910000;
+  --fire-orange: #ff4d00;
 
-  --gold-1: #b8860b;
-  --gold-2: #d4af37;
-  --gold-3: #ffd700;
-  --gold-4: #fff4b0;
-
-  --text-light: #ffe9b3;
+  /* Oros Celestiales */
+  --gold-shadow: #866a00;
+  --gold-main: #d4af37;
+  --gold-bright: #fff3a3;
+  
+  /* Textos */
+  --text-primary: #fff1d4;
+  --glass-bg: rgba(74, 0, 0, 0.8);
 }
 
 /* =========================
-   BODY – LUNAR BACKGROUND
+   BODY – FIRE & NIGHT BACKGROUND
 ========================= */
 body {
   font-family: 'Russo One', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
-  color: var(--text-light);
-
-  background:
-    radial-gradient(circle at 20% 10%, rgba(255,215,0,0.25), transparent 40%),
-    radial-gradient(circle at 80% 90%, rgba(255,0,0,0.3), transparent 40%),
-    linear-gradient(135deg, #3a0000, #7a0000, #2b0000);
+  color: var(--text-primary);
+  /* Fondo degradado con sensación de brasas/fuego */
+  background: 
+    radial-gradient(circle at top right, rgba(255, 77, 0, 0.2), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(212, 175, 55, 0.15), transparent 40%),
+    linear-gradient(180deg, #1a0000 0%, #4a0000 100%);
+  display: flex;
+  justify-content: center;
 }
 
-/* =========================
-   GOLD BORDER FRAME EFFECT
-========================= */
+/* Marco Ornamental (Esquinas Chinas) */
 body::before {
   content: "";
   position: fixed;
-  inset: 10px;
+  inset: 0;
   pointer-events: none;
-  box-shadow:
-    0 0 30px rgba(255,215,0,0.5),
-    inset 0 0 40px rgba(255,215,0,0.2);
-  z-index: 1;
+  border: 12px solid transparent;
+  border-image: linear-gradient(var(--gold-main), var(--gold-shadow)) 1;
+  mask: radial-gradient(circle at 50% 50%, transparent 95%, black 100%);
+  z-index: 10;
 }
 
 /* =========================
    CONTAINER
 ========================= */
 .container {
-  max-width: 420px;
-  margin: auto;
-  padding: 25px;
+  max-width: 440px;
+  width: 100%;
+  padding: 20px;
   position: relative;
   z-index: 2;
 }
 
 /* =========================
-   SECTIONS
+   SECTIONS & ANIMATIONS
 ========================= */
 .section {
   display: none;
-  min-height: 100vh;
+  min-height: 90vh;
   align-items: center;
   justify-content: center;
-  animation: fadeLunar 0.6s ease;
+  animation: horseGalopp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .section.active {
   display: flex;
 }
 
-@keyframes fadeLunar {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes horseGalopp {
+  0% { opacity: 0; transform: translateX(50px) skewX(-5deg); }
+  100% { opacity: 1; transform: translateX(0) skewX(0deg); }
 }
 
 /* =========================
-   CONTENT BOX – RED & GOLD GLASS
+   CONTENT BOX – IMPERIAL GLASS
 ========================= */
 .content-box {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(179,0,0,0.85),
-      rgba(122,0,0,0.95)
-    );
-
-  border-radius: 24px;
-  padding: 30px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 30px 0 30px 0; /* Esquinas asimétricas estilo oriental */
+  padding: 35px 25px;
   text-align: center;
+  border: 1px solid var(--gold-main);
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.5),
+    inset 0 0 20px rgba(255, 77, 0, 0.2);
+  position: relative;
+}
 
-  border: 2px solid var(--gold-2);
-
-  box-shadow:
-    0 0 40px rgba(255,215,0,0.5),
-    0 0 80px rgba(255,0,0,0.4);
+/* Detalle decorativo superior */
+.content-box::after {
+  content: "2026";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold-main);
+  color: var(--crimson-dark);
+  padding: 2px 15px;
+  font-size: 12px;
+  border-radius: 5px;
+  letter-spacing: 2px;
 }
 
 /* =========================
-   LOGO
+   LOGO & TITLES
 ========================= */
 .logo {
   width: 100%;
-  margin-bottom: 25px;
-
-  filter:
-    drop-shadow(0 0 15px var(--gold-3))
-    drop-shadow(0 0 35px rgba(255,215,0,0.6));
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px var(--gold-main));
 }
 
-/* =========================
-   TITLES
-========================= */
 h2 {
-  font-size: 22px;
-  margin-bottom: 16px;
-  color: var(--gold-3);
-  text-shadow:
-    0 0 10px var(--gold-3),
-    0 0 25px rgba(255,215,0,0.7);
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold-bright);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 10px;
 }
 
 p {
-  font-size: 14px;
-  margin-top: 10px;
-  color: #ffe0a3;
+  font-size: 15px;
+  color: var(--gold-main);
+  opacity: 0.9;
 }
 
 /* =========================
-   INPUT
+   INPUTS – DARK SILK STYLE
 ========================= */
 input {
   width: 100%;
-  padding: 14px;
-  margin-top: 12px;
-
-  border-radius: 14px;
-  border: 2px solid var(--gold-2);
-
-  background: rgba(0,0,0,0.5);
-  color: var(--gold-4);
-
-  text-align: center;
-  font-size: 15px;
-
-  box-shadow:
-    inset 0 0 15px rgba(255,215,0,0.3);
+  padding: 16px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--gold-shadow);
+  background: rgba(20, 0, 0, 0.6);
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
-input::placeholder {
-  color: rgba(255,240,180,0.4);
+input:focus {
+  outline: none;
+  border-color: var(--fire-orange);
+  box-shadow: 0 0 15px rgba(255, 77, 0, 0.4);
 }
 
 /* =========================
-   BUTTON – IMPERIAL GOLD
+   BUTTON – FIRE ENERGY
 ========================= */
 button {
-  margin-top: 22px;
+  margin-top: 25px;
   width: 100%;
-  padding: 15px;
-
-  border-radius: 18px;
+  padding: 18px;
+  border-radius: 50px;
   border: none;
-
-  font-size: 15px;
-  cursor: pointer;
-
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 2px;
-
-  background: linear-gradient(
-    135deg,
-    #8a6500,
-    var(--gold-3),
-    var(--gold-4)
-  );
-
-  color: #4a0000;
-
-  box-shadow:
-    0 0 20px rgba(255,215,0,0.8);
-
-  transition: 0.3s ease;
+  cursor: pointer;
+  background: linear-gradient(45deg, var(--gold-shadow), var(--gold-main), var(--gold-bright));
+  color: var(--crimson-dark);
+  box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.08);
-  box-shadow:
-    0 0 40px rgba(255,215,0,1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--fire-orange);
+  letter-spacing: 3px;
 }
 
 /* =========================
-   CARDS GRID
+   CARDS – RED ENVELOPE (HONG BAO) STYLE
 ========================= */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 22px;
+  gap: 12px;
+  margin-top: 25px;
 }
 
-/* =========================
-   CARD – LUNAR STYLE
-========================= */
 .card {
-  background:
-    linear-gradient(
-      160deg,
-      rgba(255,0,0,0.7),
-      rgba(122,0,0,0.9)
-    );
-
-  border-radius: 18px;
-  padding: 8px;
-  cursor: pointer;
-
-  border: 2px solid var(--gold-2);
-
-  transition: all 0.25s ease;
-
-  box-shadow:
-    0 0 20px rgba(255,215,0,0.5);
+  background: linear-gradient(135deg, var(--crimson-main), var(--crimson-dark));
+  border-radius: 12px;
+  padding: 5px;
+  border: 2px solid var(--gold-shadow);
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 8px;
+  display: block;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow:
-    0 0 35px rgba(255,215,0,1);
+  transform: scale(1.1) rotate(2deg);
+  border-color: var(--gold-bright);
+  z-index: 5;
 }
 
 .card.selected {
-  outline: 3px solid var(--gold-3);
-  box-shadow:
-    0 0 45px rgba(255,215,0,1);
+  border-color: var(--fire-orange);
+  box-shadow: 0 0 25px var(--fire-orange);
+  transform: scale(1.05);
 }
 
 /* =========================
-   SPINNER – GOLD FIRE CORE
+   SPINNER – SUN & FIRE
 ========================= */
 .spinner {
-  width: 72px;
-  height: 72px;
+  width: 60px;
+  height: 60px;
+  margin: 30px auto;
+  border: 4px solid transparent;
+  border-top-color: var(--gold-main);
+  border-bottom-color: var(--fire-orange);
   border-radius: 50%;
-  margin: 22px auto;
-
-  border: 6px solid rgba(255,255,255,0.2);
-  border-top: 6px solid var(--gold-3);
-
-  animation: spin 1s linear infinite;
-
-  box-shadow:
-    0 0 30px rgba(255,215,0,1);
+  animation: fireSpin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes fireSpin {
+  to { transform: rotate(360deg); }
 }
 
 /* =========================
-   FINAL POP
+   FINAL POP ANIMATION
 ========================= */
 #finalCards .card {
-  animation: goldPop 0.4s ease;
+  animation: dragonRise 0.6s backwards;
 }
 
-@keyframes goldPop {
-  from {
-    transform: scale(0.6);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+@keyframes dragonRise {
+  0% { opacity: 0; transform: translateY(100px) scale(0.5); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
-@media (max-width: 360px) {
+@media (max-width: 380px) {
   .cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  h2 { font-size: 18px; }
 }
